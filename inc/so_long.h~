@@ -1,0 +1,95 @@
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include <fcntl.h>
+# include "mlx.h"
+# include "libft.h"
+# include "so_error.h"
+
+# define SCRN_WIDTH 800
+# define SCRN_HEIGHT 600
+# define CHARSET "01CEP"
+
+# define WHITE 0
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
+# define RED 0x00FF0000
+
+# define PLAYER_SPRITE ./graphics/player.xpm
+# define ITEM_SPRITE ./graphics/item.xpm
+
+typedef struct s_dot
+{
+	int	width;
+	int	height;
+}		t_dot;
+
+typedef struct s_fpos
+{
+	float	width;
+	float	height;
+}		t_fpos;
+
+typedef t_dot t_pos;
+
+/*
+** Map
+*/
+
+typedef struct s_map
+{
+	char	*layout;
+	int	width;
+	int	height;
+}		t_map;
+
+typedef struct	s_img
+{
+	void		*id;
+	int		*layout;
+	int		width;
+	int		height;
+}		t_img;
+
+typedef struct	s_scrn
+{
+	void	*id;
+	t_img	img;
+}		t_scrn;
+
+typedef struct	s_mlx
+{
+	void	*id;
+	t_scrn	scrn;
+}		t_mlx;
+
+typedef struct	s_sprite
+{
+	t_img	img;
+	t_fpos	pos;
+}		t_sprite;
+
+typedef struct s_player
+{
+	t_sprite sprt;
+}		t_player;
+
+typedef	struct t_tiles
+{
+	char	*tiles_id;
+	t_img	*tiles_sprt;
+}		t_tiles;
+
+typedef struct s_env
+{
+	t_map		map;
+	t_tiles
+	t_player	player;
+	t_list		*item_ls;
+}		t_env;
+
+/*
+** Renderer
+*/
+
+#endif
